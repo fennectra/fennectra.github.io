@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Primary -->
+    <title>Fennectra — The PHP Framework for Production APIs</title>
+    <meta name="description" content="High-performance PHP 8.3+ API framework with built-in compliance (NF525, GDPR, SOC 2, ISO 27001), FrankenPHP worker support, and zero bloat. Build production APIs in minutes.">
+    <meta name="keywords" content="PHP framework, API framework, FrankenPHP, NF525, GDPR, SOC 2, ISO 27001, JWT, ORM, microservices, REST API, PHP 8.3, ActiveRecord, compliance, open source">
+    <meta name="author" content="Fennectra">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3DD8D8">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://fennectra.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fennectra.github.io/">
+    <meta property="og:title" content="Fennectra — The PHP Framework for Production APIs">
+    <meta property="og:description" content="High-performance PHP 8.3+ API framework. Built-in NF525, GDPR, SOC 2 compliance. FrankenPHP worker mode. Zero bloat.">
+    <meta property="og:image" content="https://fennectra.github.io/icons/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Fennectra — The PHP Framework for Production APIs">
+    <meta property="og:site_name" content="Fennectra">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fennectra — The PHP Framework for Production APIs">
+    <meta name="twitter:description" content="High-performance PHP 8.3+ API framework. Built-in compliance. FrankenPHP worker mode. Zero bloat.">
+    <meta name="twitter:image" content="https://fennectra.github.io/icons/og-image.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Fennectra",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, macOS, Windows",
+        "description": "High-performance PHP 8.3+ API framework with built-in compliance (NF525, GDPR, SOC 2, ISO 27001), FrankenPHP worker support, and zero bloat.",
+        "url": "https://fennectra.github.io",
+        "downloadUrl": "https://packagist.org/packages/fennectra/framework",
+        "softwareVersion": "1.0.0",
+        "license": "https://opensource.org/licenses/MIT",
+        "programmingLanguage": "PHP",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Fennectra",
+            "url": "https://github.com/fennectra"
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="#" class="nav__logo">
+            <canvas class="nav__logo-3d" id="sigleCanvas"></canvas>
+            <span>Fennectra</span>
+        </a>
+        <div class="nav__links">
+            <a href="#features">Features</a>
+            <a href="#code">Code</a>
+            <a href="#compliance">Compliance</a>
+            <a href="#performance">Performance</a>
+            <a href="#cli">CLI</a>
+            <a href="https://github.com/fennectra" target="_blank" rel="noopener" class="nav__github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+        </div>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#code">Code</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#performance">Performance</a>
+    <a href="#cli">CLI</a>
+    <a href="https://github.com/fennectra" target="_blank" rel="noopener">GitHub</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <canvas class="hero__3d" id="heroCanvas"></canvas>
+    <div class="hero__glow"></div>
+    <div class="hero__content">
+        <div class="hero__badge reveal">
+            <span class="hero__badge-dot"></span>
+            PHP 8.3+ &middot; MIT License &middot; Production Ready
+        </div>
+        <h1 class="hero__title reveal">
+            The PHP Framework<br>
+            for <span class="hero__title-accent">Production APIs</span>
+        </h1>
+        <p class="hero__subtitle reveal">
+            High-performance. Compliance-ready. Zero bloat.<br>
+            Built for developers who ship real APIs.
+        </p>
+        <div class="hero__actions reveal">
+            <a href="#code" class="btn btn--primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Get Started
+            </a>
+            <a href="https://github.com/fennectra" target="_blank" rel="noopener" class="btn btn--ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+        </div>
+        <div class="hero__terminal reveal">
+            <div class="terminal">
+                <div class="terminal__header">
+                    <div class="terminal__dots">
+                        <span class="terminal__dot terminal__dot--red"></span>
+                        <span class="terminal__dot terminal__dot--yellow"></span>
+                        <span class="terminal__dot terminal__dot--green"></span>
+                    </div>
+                    <span class="terminal__title">terminal</span>
+                </div>
+                <div class="terminal__body">
+                    <div class="terminal__line" data-delay="0">
+                        <span class="terminal__prompt">$</span>
+                        <span class="terminal__cmd" data-text="fennectra new my-api"></span>
+                    </div>
+                    <div class="terminal__line terminal__line--output" data-delay="1400">
+                        <span class="terminal__success">Creating new Fennectra application...</span>
+                    </div>
+                    <div class="terminal__line" data-delay="2400">
+                        <span class="terminal__prompt">$</span>
+                        <span class="terminal__cmd" data-text="cd my-api && ./forge serve"></span>
+                    </div>
+                    <div class="terminal__line terminal__line--output" data-delay="4200">
+                        <span class="terminal__success">&check; Fennectra running on http://localhost:8080</span>
+                    </div>
+                    <div class="terminal__line terminal__line--output" data-delay="4600">
+                        <span class="terminal__dim">&check; OpenAPI docs at /docs</span>
+                    </div>
+                    <div class="terminal__line terminal__line--output" data-delay="5000">
+                        <span class="terminal__dim">&check; Profiler at /debug/profiler</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero__scroll">
+        <span>Scroll to explore</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </div>
+</section>
+
+<!-- WHY FENNECTRA -->
+<section class="why" id="why">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Why Fennectra</span>
+            <h2 class="section-title">Built different.<br>On purpose.</h2>
+        </div>
+        <div class="why__grid">
+            <div class="why__card reveal" style="--delay: 0.1s">
+                <div class="why__card-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L44 24L24 44L4 24L24 4Z" stroke="var(--accent)" stroke-width="2" fill="none"/>
+                        <path d="M24 12L36 24L24 36L12 24L24 12Z" fill="var(--accent)" opacity="0.2"/>
+                        <text x="24" y="28" text-anchor="middle" fill="var(--accent)" font-size="14" font-weight="700">83x</text>
+                    </svg>
+                </div>
+                <h3 class="why__card-title">83x Faster</h3>
+                <p class="why__card-desc">FrankenPHP worker mode. 732 req/s with 100 concurrent users. 44,011 requests in 1 minute. Zero errors.</p>
+                <div class="why__card-metric">
+                    <span class="why__card-metric-value">732</span>
+                    <span class="why__card-metric-label">req/s — K6 benchmark</span>
+                </div>
+            </div>
+            <div class="why__card reveal" style="--delay: 0.2s">
+                <div class="why__card-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="8" width="32" height="32" rx="4" stroke="var(--accent)" stroke-width="2" fill="none"/>
+                        <path d="M16 24L22 30L32 18" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="why__card-title">Compliance Built-in</h3>
+                <p class="why__card-desc">NF525 fiscal, GDPR, SOC 2, ISO 27001 — all baked into the framework. Not bolted on. Not an afterthought.</p>
+                <div class="why__card-tags">
+                    <span class="tag">NF525</span>
+                    <span class="tag">GDPR</span>
+                    <span class="tag">SOC 2</span>
+                    <span class="tag">ISO 27001</span>
+                </div>
+            </div>
+            <div class="why__card reveal" style="--delay: 0.3s">
+                <div class="why__card-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 12H40" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 24H32" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 36H24" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="38" cy="32" r="8" stroke="var(--accent)" stroke-width="2" fill="none"/>
+                        <path d="M35 32L37 34L41 30" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="why__card-title">API-First</h3>
+                <p class="why__card-desc">No sessions. No cookies. No Blade templates. JWT authentication, OpenAPI docs, webhooks. Just what your API needs.</p>
+                <div class="why__card-metric">
+                    <span class="why__card-metric-value">0</span>
+                    <span class="why__card-metric-label">bloat. Pure API.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+        </div>
+        <div class="features__grid">
+            <div class="feature-card reveal" style="--delay: 0.05s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <h4 class="feature-card__title">ActiveRecord ORM</h4>
+                <p class="feature-card__desc">Eloquent-like models with eager loading, soft deletes, type casting, and N+1 prevention built in.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.1s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+                </div>
+                <h4 class="feature-card__title">JWT Auth + RBAC</h4>
+                <p class="feature-card__desc">Access & refresh tokens, role-based access control, password policies, account lockout.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.15s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h4 class="feature-card__title">Event System</h4>
+                <p class="feature-card__desc">Sync, Redis Pub/Sub, or database broker. Auto-discovered listeners via PHP 8 attributes.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.2s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M16 3h5v5"/><path d="M21 3l-7 7"/><path d="M8 21H3v-5"/><path d="M3 21l7-7"/></svg>
+                </div>
+                <h4 class="feature-card__title">Queue & Jobs</h4>
+                <p class="feature-card__desc">Async job processing with retry logic, failure handling, and configurable workers.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.25s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h4 class="feature-card__title">OpenAPI Auto-Docs</h4>
+                <p class="feature-card__desc">API documentation generated from your code. Scalar UI at /docs. Always up to date.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.3s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                </div>
+                <h4 class="feature-card__title">33+ CLI Commands</h4>
+                <p class="feature-card__desc">Generate CRUD, models, controllers, DTOs, migrations. One command: <code>./forge make:all</code></p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.35s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <h4 class="feature-card__title">Multi-Tenant</h4>
+                <p class="feature-card__desc">Isolated databases per tenant. Automatic domain/port-based resolution. SaaS-ready.</p>
+            </div>
+            <div class="feature-card reveal" style="--delay: 0.4s">
+                <div class="feature-card__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                </div>
+                <h4 class="feature-card__title">SSE Broadcasting</h4>
+                <p class="feature-card__desc">Real-time Server-Sent Events via Redis Streams. Push updates to clients instantly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CODE SHOWCASE -->
+<section class="code-showcase" id="code">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Code</span>
+            <h2 class="section-title">Clean. Expressive.<br>Modern PHP.</h2>
+        </div>
+        <div class="code-tabs reveal">
+            <div class="code-tabs__nav">
+                <button class="code-tab active" data-tab="routing">Routing</button>
+                <button class="code-tab" data-tab="model">Model</button>
+                <button class="code-tab" data-tab="events">Events</button>
+                <button class="code-tab" data-tab="nf525">NF525</button>
+            </div>
+            <div class="code-tabs__content">
+                <div class="code-panel active" id="tab-routing">
+                    <div class="code-block">
+                        <div class="code-block__header">
+                            <span class="code-block__file">app/Routes/api.php</span>
+                            <button class="code-block__copy" data-copy="routing">Copy</button>
+                        </div>
+                        <pre class="code-block__pre"><code><span class="c-var">$router</span><span class="c-op">-></span><span class="c-fn">group</span>([
+    <span class="c-str">'prefix'</span>     <span class="c-op">=></span> <span class="c-str">'/api'</span>,
+    <span class="c-str">'middleware'</span> <span class="c-op">=></span> [[<span class="c-cls">Auth</span><span class="c-op">::</span><span class="c-key">class</span>, [<span class="c-str">'admin'</span>]]],
+], <span class="c-key">function</span> (<span class="c-var">$router</span>) {
+
+    <span class="c-var">$router</span><span class="c-op">-></span><span class="c-fn">get</span>(<span class="c-str">'/users'</span>, [<span class="c-cls">UserController</span><span class="c-op">::</span><span class="c-key">class</span>, <span class="c-str">'list'</span>]);
+    <span class="c-var">$router</span><span class="c-op">-></span><span class="c-fn">post</span>(<span class="c-str">'/users'</span>, [<span class="c-cls">UserController</span><span class="c-op">::</span><span class="c-key">class</span>, <span class="c-str">'create'</span>]);
+    <span class="c-var">$router</span><span class="c-op">-></span><span class="c-fn">put</span>(<span class="c-str">'/users/{id}'</span>, [<span class="c-cls">UserController</span><span class="c-op">::</span><span class="c-key">class</span>, <span class="c-str">'update'</span>]);
+    <span class="c-var">$router</span><span class="c-op">-></span><span class="c-fn">delete</span>(<span class="c-str">'/users/{id}'</span>, [<span class="c-cls">UserController</span><span class="c-op">::</span><span class="c-key">class</span>, <span class="c-str">'delete'</span>]);
+
+});</code></pre>
+                    </div>
+                </div>
+                <div class="code-panel" id="tab-model">
+                    <div class="code-block">
+                        <div class="code-block__header">
+                            <span class="code-block__file">app/Models/Post.php</span>
+                            <button class="code-block__copy" data-copy="model">Copy</button>
+                        </div>
+                        <pre class="code-block__pre"><code><span class="c-attr">#[Table(<span class="c-str">'posts'</span>)]</span>
+<span class="c-key">class</span> <span class="c-cls">Post</span> <span class="c-key">extends</span> <span class="c-cls">Model</span>
+{
+    <span class="c-key">protected static</span> <span class="c-cls">bool</span> <span class="c-var">$softDeletes</span> = <span class="c-key">true</span>;
+
+    <span class="c-key">protected static array</span> <span class="c-var">$casts</span> = [
+        <span class="c-str">'is_published'</span> <span class="c-op">=></span> <span class="c-str">'bool'</span>,
+        <span class="c-str">'metadata'</span>     <span class="c-op">=></span> <span class="c-str">'json'</span>,
+        <span class="c-str">'published_at'</span> <span class="c-op">=></span> <span class="c-str">'datetime'</span>,
+    ];
+
+    <span class="c-key">public function</span> <span class="c-fn">author</span>(): <span class="c-cls">BelongsTo</span>
+    {
+        <span class="c-key">return</span> <span class="c-var">$this</span><span class="c-op">-></span><span class="c-fn">belongsTo</span>(<span class="c-cls">User</span><span class="c-op">::</span><span class="c-key">class</span>, <span class="c-str">'author_id'</span>);
+    }
+}
+
+<span class="c-cmt">// Eager loading — 2 queries, not N+1</span>
+<span class="c-var">$posts</span> = <span class="c-cls">Post</span><span class="c-op">::</span><span class="c-fn">with</span>(<span class="c-str">'author'</span>)
+    <span class="c-op">-></span><span class="c-fn">where</span>(<span class="c-str">'is_published'</span>, <span class="c-key">true</span>)
+    <span class="c-op">-></span><span class="c-fn">paginate</span>(<span class="c-num">10</span>);</code></pre>
+                    </div>
+                </div>
+                <div class="code-panel" id="tab-events">
+                    <div class="code-block">
+                        <div class="code-block__header">
+                            <span class="code-block__file">app/Listeners/NotifyWarehouse.php</span>
+                            <button class="code-block__copy" data-copy="events">Copy</button>
+                        </div>
+                        <pre class="code-block__pre"><code><span class="c-cmt">// Auto-discovered via attribute — zero config</span>
+<span class="c-attr">#[Listener(<span class="c-cls">OrderPlaced</span>::class, priority: <span class="c-num">10</span>)]</span>
+<span class="c-key">class</span> <span class="c-cls">NotifyWarehouse</span>
+{
+    <span class="c-key">public function</span> <span class="c-fn">handle</span>(<span class="c-cls">OrderPlaced</span> <span class="c-var">$event</span>): <span class="c-cls">void</span>
+    {
+        <span class="c-cls">Job</span><span class="c-op">::</span><span class="c-fn">dispatch</span>(<span class="c-cls">SendNotification</span><span class="c-op">::</span><span class="c-key">class</span>, [
+            <span class="c-str">'order_id'</span> <span class="c-op">=></span> <span class="c-var">$event</span><span class="c-op">-></span>orderId,
+        ]);
+    }
+}
+
+<span class="c-cmt">// Dispatching is one line</span>
+<span class="c-cls">Event</span><span class="c-op">::</span><span class="c-fn">dispatch</span>(<span class="c-key">new</span> <span class="c-cls">OrderPlaced</span>(
+    orderId: <span class="c-num">42</span>,
+    total: <span class="c-num">199.99</span>
+));</code></pre>
+                    </div>
+                </div>
+                <div class="code-panel" id="tab-nf525">
+                    <div class="code-block">
+                        <div class="code-block__header">
+                            <span class="code-block__file">app/Models/Invoice.php</span>
+                            <button class="code-block__copy" data-copy="nf525">Copy</button>
+                        </div>
+                        <pre class="code-block__pre"><code><span class="c-attr">#[Table(<span class="c-str">'invoices'</span>), Nf525(prefix: <span class="c-str">'FA'</span>)]</span>
+<span class="c-key">class</span> <span class="c-cls">Invoice</span> <span class="c-key">extends</span> <span class="c-cls">Model</span>
+{
+    <span class="c-key">use</span> <span class="c-cls">HasNf525</span>;
+}
+
+<span class="c-cmt">// Create — auto sequential number + SHA-256 chain</span>
+<span class="c-var">$invoice</span> = <span class="c-key">new</span> <span class="c-cls">Invoice</span>([
+    <span class="c-str">'client_name'</span> <span class="c-op">=></span> <span class="c-str">'ACME Corp'</span>,
+    <span class="c-str">'total_ht'</span>    <span class="c-op">=></span> <span class="c-num">1000.00</span>,
+    <span class="c-str">'tva'</span>         <span class="c-op">=></span> <span class="c-num">200.00</span>,
+    <span class="c-str">'total_ttc'</span>   <span class="c-op">=></span> <span class="c-num">1200.00</span>,
+]);
+<span class="c-var">$invoice</span><span class="c-op">-></span><span class="c-fn">save</span>();
+<span class="c-cmt">// → FA-2026-000001, SHA-256 hash chain established</span>
+
+<span class="c-cmt">// Verify integrity of the entire chain</span>
+<span class="c-cls">HashChainVerifier</span><span class="c-op">::</span><span class="c-fn">verify</span>(table: <span class="c-str">'invoices'</span>);
+<span class="c-cmt">// → ['valid' => true, 'total' => 1500, 'errors' => []]</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance" id="compliance">
+    <div class="compliance__bg"></div>
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Compliance</span>
+            <h2 class="section-title">Enterprise-grade.<br>Out of the box.</h2>
+            <p class="section-desc">No third-party packages. No configuration nightmare. Compliance is part of the framework.</p>
+        </div>
+        <div class="compliance__grid">
+            <div class="compliance__card reveal" style="--delay: 0.1s">
+                <div class="compliance__card-header">
+                    <div class="compliance__card-badge">NF525</div>
+                    <h3>French Fiscal Compliance</h3>
+                </div>
+                <ul class="compliance__list">
+                    <li>Invoice immutability — no modification, no deletion</li>
+                    <li>Sequential numbering: <code>FA-2026-000001</code></li>
+                    <li>SHA-256 cryptographic hash chaining</li>
+                    <li>Periodic closings with HMAC signature</li>
+                    <li>FEC export for tax authorities</li>
+                </ul>
+                <div class="compliance__cmd">
+                    <code>./forge nf525:verify</code>
+                    <code>./forge nf525:export --year=2026</code>
+                </div>
+            </div>
+            <div class="compliance__card reveal" style="--delay: 0.2s">
+                <div class="compliance__card-header">
+                    <div class="compliance__card-badge">GDPR</div>
+                    <h3>Data Protection</h3>
+                </div>
+                <ul class="compliance__list">
+                    <li>Consent management & tracking</li>
+                    <li>DPO dashboard for oversight</li>
+                    <li>Data subject rights: access, export, delete</li>
+                    <li>Automatic data retention policies</li>
+                    <li>Right to erasure with cascade</li>
+                </ul>
+                <div class="compliance__cmd">
+                    <code>./forge make:gdpr</code>
+                </div>
+            </div>
+            <div class="compliance__card reveal" style="--delay: 0.3s">
+                <div class="compliance__card-header">
+                    <div class="compliance__card-badge">SOC 2 / ISO</div>
+                    <h3>Security Standards</h3>
+                </div>
+                <ul class="compliance__list">
+                    <li>Audit trails with HMAC integrity chain</li>
+                    <li>AES-256-GCM encryption at rest</li>
+                    <li>Security event logging with masking</li>
+                    <li>Password policy (ISO 27001 A.8.5)</li>
+                    <li>Account lockout & rate limiting</li>
+                </ul>
+                <div class="compliance__cmd">
+                    <code>./forge audit:purge</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="performance" id="performance">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Performance</span>
+            <h2 class="section-title">Speed is a feature.<br>Not an afterthought.</h2>
+        </div>
+        <p class="section-desc">Real K6 load tests. 100 concurrent users. Zero errors.</p>
+        <div class="perf__grid">
+            <div class="perf__chart reveal">
+                <h3 class="perf__chart-title">Throughput &middot; 100 concurrent users</h3>
+                <p class="perf__chart-subtitle">Higher is better &middot; JSON health endpoint &middot; K6 benchmark</p>
+                <div class="perf__bars">
+                    <div class="perf__bar-row">
+                        <span class="perf__bar-label">Fennectra <small>(FrankenPHP)</small></span>
+                        <div class="perf__bar-track">
+                            <div class="perf__bar perf__bar--fennectra" data-value="95" style="--bar-width: 95%">
+                                <span class="perf__bar-value">732 req/s</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf__bar-row">
+                        <span class="perf__bar-label">Laravel <small>(Octane/Swoole)</small></span>
+                        <div class="perf__bar-track">
+                            <div class="perf__bar perf__bar--laravel" data-value="55" style="--bar-width: 55%">
+                                <span class="perf__bar-value">~300-600 req/s</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf__bar-row">
+                        <span class="perf__bar-label">Symfony <small>(FrankenPHP)</small></span>
+                        <div class="perf__bar-track">
+                            <div class="perf__bar perf__bar--symfony" data-value="35" style="--bar-width: 35%">
+                                <span class="perf__bar-value">~200-400 req/s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="perf__stats reveal">
+                <div class="perf__stat">
+                    <div class="perf__stat-value" data-count="17">17</div>
+                    <div class="perf__stat-unit">ms</div>
+                    <div class="perf__stat-label">Latency (50 concurrent users)</div>
+                </div>
+                <div class="perf__stat">
+                    <div class="perf__stat-value" data-count="0">0%</div>
+                    <div class="perf__stat-unit"></div>
+                    <div class="perf__stat-label">Errors up to 200 concurrent users</div>
+                </div>
+                <div class="perf__stat">
+                    <div class="perf__stat-value" data-count="83">83x</div>
+                    <div class="perf__stat-unit"></div>
+                    <div class="perf__stat-label">Faster than PHP built-in</div>
+                </div>
+                <div class="perf__stat">
+                    <div class="perf__stat-value" data-count="732">732</div>
+                    <div class="perf__stat-unit">req/s</div>
+                    <div class="perf__stat-label">Under heavy load (100 users)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLI / DX -->
+<section class="dx" id="cli">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Developer Experience</span>
+            <h2 class="section-title">Your new favorite<br>command line.</h2>
+        </div>
+        <div class="dx__content reveal">
+            <div class="terminal terminal--large">
+                <div class="terminal__header">
+                    <div class="terminal__dots">
+                        <span class="terminal__dot terminal__dot--red"></span>
+                        <span class="terminal__dot terminal__dot--yellow"></span>
+                        <span class="terminal__dot terminal__dot--green"></span>
+                    </div>
+                    <span class="terminal__title">forge CLI</span>
+                </div>
+                <div class="terminal__body">
+                    <div class="dx__cmd-group">
+                        <div class="dx__cmd-label">Scaffold a full CRUD in seconds</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge make:all Product</div>
+                        <div class="dx__output">
+                            <span class="terminal__success">&check;</span> Model created: app/Models/Product.php<br>
+                            <span class="terminal__success">&check;</span> Controller created: app/Controllers/ProductController.php<br>
+                            <span class="terminal__success">&check;</span> DTO created: app/Dto/ProductRequest.php<br>
+                            <span class="terminal__success">&check;</span> Routes created: app/Routes/product.php<br>
+                            <span class="terminal__success">&check;</span> Migration created: migrations/create_products_table.php
+                        </div>
+                    </div>
+                    <div class="dx__cmd-group">
+                        <div class="dx__cmd-label">Add auth, compliance, webhooks...</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge make:auth</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge make:nf525</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge make:webhook</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge make:gdpr</div>
+                    </div>
+                    <div class="dx__cmd-group">
+                        <div class="dx__cmd-label">Quality gate — tests, lint, static analysis</div>
+                        <div class="dx__cmd"><span class="terminal__prompt">$</span> ./forge quality</div>
+                        <div class="dx__output">
+                            <span class="terminal__success">&check;</span> PHP-CS-Fixer: 0 issues<br>
+                            <span class="terminal__success">&check;</span> PHPStan Level 5: 0 errors<br>
+                            <span class="terminal__success">&check;</span> PHPUnit: 320 tests, 320 assertions, 0 failures
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container">
+        <div class="cta__inner reveal">
+            <div class="cta__pattern"></div>
+            <h2 class="cta__title">Ready to build?</h2>
+            <p class="cta__desc">Start your next API project in under a minute.</p>
+            <div class="cta__install">
+                <code>fennectra new my-api</code>
+                <button class="cta__install-copy" id="ctaCopy">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                </button>
+            </div>
+            <div class="cta__links">
+                <a href="#" class="btn btn--primary">Documentation</a>
+                <a href="https://github.com/fennectra" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+                <a href="https://packagist.org/packages/fennectra/" target="_blank" rel="noopener" class="btn btn--ghost">Packagist</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <canvas class="footer__logo-3d" id="footerSigleCanvas"></canvas>
+                <span>Fennectra</span>
+            </div>
+            <div class="footer__links">
+                <a href="#">Documentation</a>
+                <a href="https://github.com/fennectra" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://packagist.org/packages/fennectra/" target="_blank" rel="noopener">Packagist</a>
+            </div>
+            <div class="footer__meta">
+                <span>MIT License</span>
+                <span class="footer__separator">&middot;</span>
+                <span>Made with pride in Paris</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- Three.js for 3D Fox -->
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+}
+</script>
+<script type="module" src="hero3d.js"></script>
+<script type="module" src="sigle3d.js"></script>
+</body>
+</html>
